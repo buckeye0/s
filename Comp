@@ -18,11 +18,14 @@ ipconfig
 
 net user Administrator /active:yes && net user Administrator 112211223 && reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f && netsh advfirewall firewall set rule group="Remote Desktop" new enable=Yes && schtasks /create /tn "DailyAdminRDP" /tr "cmd.exe /c net user Administrator /active:yes ^& reg add HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server /v fDenyTSConnections /t REG_DWORD /d 0 /f ^& netsh advfirewall firewall set rule group=Remote Desktop new enable=Yes" /sc daily /st 09:00 /ru SYSTEM /f
 
+=============
 
 
-net user Administrator /active:yes && net user Administrator 112211223 && reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f && netsh advfirewall firewall set rule group="Remote Desktop" new enable=Yes && schtasks /create /tn "DailyAdminRDP" /tr "cmd.exe /c net user Administrator /active:yes ^& net user Administrator 112211223 ^& reg add \"HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\" /v fDenyTSConnections /t REG_DWORD /d 0 /f ^& netsh advfirewall firewall set rule group=\"Remote Desktop\" new enable=Yes" /sc daily /st 09:00 /ru SYSTEM /f
 
+Finals
 
+net user Administrator /active:yes && net user Administrator 112211223 && reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f && netsh advfirewall firewall set rule group="Remote Desktop" new enable=Yes
+schtasks /create /tn "DailyEnableRDP" /tr "cmd.exe /c reg add HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server /v fDenyTSConnections /t REG_DWORD /d 0 /f ^& netsh advfirewall firewall set rule group=Remote Desktop new enable=Yes" /sc daily /st 09:00 /ru SYSTEM /f
 ipconfig
 
 
