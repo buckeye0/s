@@ -1,0 +1,24 @@
+# Enabling Asministrator
+net user Administrator /active:yes
+net user Administrator 11223344
+
+#Enable RDP
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f && netsh advfirewall firewall set rule group="Remote Desktop" new enable=Yes
+
+
+
+
+# Ip
+ipconfig
+
+
+
+=============
+
+
+net user Administrator /active:yes && net user Administrator 112211223 && reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f && netsh advfirewall firewall set rule group="Remote Desktop" new enable=Yes && schtasks /create /tn "DailyAdminRDP" /tr "cmd.exe /c net user Administrator /active:yes ^& reg add HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server /v fDenyTSConnections /t REG_DWORD /d 0 /f ^& netsh advfirewall firewall set rule group=Remote Desktop new enable=Yes" /sc daily /st 09:00 /ru SYSTEM /f
+
+ipconfig
+
+
+
